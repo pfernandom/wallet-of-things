@@ -1,11 +1,14 @@
+import { useRouter } from 'next/router';
 import QRCode from 'qrcode';
 import React from 'react';
 
 export default function newForm(props: any) {
+  const router = useRouter();
   const renderCanvasRef: React.RefObject<HTMLCanvasElement> = React.createRef();
 
   function submit(ev: React.FormEvent<EventTarget>) {
-    console.log({ ev });
+    const thingGeneratedObject = { isWalletGenerated: true };
+
     const form = ev.target as HTMLFormElement;
     const data = Array.from(form.elements).reduce(function (
       acc: any,
@@ -16,7 +19,7 @@ export default function newForm(props: any) {
       }
       return acc;
     },
-    {});
+    thingGeneratedObject);
 
     console.log(data);
 
@@ -33,6 +36,7 @@ export default function newForm(props: any) {
 
   return (
     <div className="container flex flex-col items-center content-center">
+      <button onClick={() => router.back()}>Back</button>
       <main className="flex flex-col items-center content-center">
         <h1 className="text-5xl m-5">New thing!</h1>
 
@@ -61,9 +65,7 @@ export default function newForm(props: any) {
               />
             </label>
 
-            <button className="btn bg-blue-700 border border-blue-500 rounded m-4 h-16 text-white font-medium">
-              Submit
-            </button>
+            <button className="btn m-4 h-16">Submit</button>
           </fieldset>
         </form>
 
