@@ -1,5 +1,5 @@
 {
-  "name": "progressive-web-app",
+  "name": "wallet-of-things",
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
@@ -31,6 +31,7 @@
     "eslint-loader": "^4.0.2",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
+    "netlify-plugin-cache-nextjs": "^1.6.0",
     "postcss": "^8.2.12",
     "prettier": "^2.2.1",
     "tailwindcss": "^2.1.1",
