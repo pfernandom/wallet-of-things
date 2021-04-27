@@ -16,14 +16,14 @@ export default function Home() {
             <a className={styles.card}>
               {' '}
               <h3>New Thing &rarr;</h3>
-              <p>Create notes about a new thing.</p>
+              <p>Create notes about a new thing and pass them over.</p>
             </a>
           </Link>
           <Link href="/scan">
             <a className={styles.card}>
               {' '}
-              <h3>Pass the Thing &rarr;</h3>
-              <p>Pass the thing to someone else.</p>
+              <h3>Get the Thing &rarr;</h3>
+              <p>Get the thing from someone else.</p>
             </a>
           </Link>
         </div>
