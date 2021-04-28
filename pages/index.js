@@ -19,6 +19,13 @@ export default function Home() {
               <p>Create notes about a new thing and pass them over.</p>
             </a>
           </Link>
+          <Link href="/all">
+            <a className={styles.card}>
+              {' '}
+              <h3>See all Things &rarr;</h3>
+              <p>See all the things you have created.</p>
+            </a>
+          </Link>
           <Link href="/scan">
             <a className={styles.card}>
               {' '}

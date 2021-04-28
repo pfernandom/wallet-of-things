@@ -1,8 +1,14 @@
 import Head from 'next/head';
+import PouchDB from 'pouchdb';
 import '../styles/globals.css';
 import '../styles/utils.css';
 
 export default function MyApp({ Component, pageProps }) {
+  const db = new PouchDB('WalletForThings');
+  if (db.debug) {
+    db.debug.enable('*');
+  }
+
   return (
     <>
       <Head>
@@ -14,7 +20,7 @@ export default function MyApp({ Component, pageProps }) {
         />
         <meta name="description" content="Description" />
         <meta name="keywords" content="Keywords" />
-        <title>Next.js PWA Example</title>
+        <title>Wallet of Things</title>
         <link rel="manifest" href="/manifest.json" />
         <link
           href="/icons/favicon-16x16.png"
@@ -31,7 +37,7 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
-      <Component {...pageProps} />
+      <Component {...pageProps} db={db} />
     </>
   );
 }

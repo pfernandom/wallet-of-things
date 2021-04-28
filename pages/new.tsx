@@ -1,13 +1,18 @@
 import { useRouter } from 'next/router';
 import QRCode from 'qrcode';
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function newForm(props: any) {
+  props.db.info().then(function (info) {
+    console.log(info);
+  });
+
   const router = useRouter();
   const renderCanvasRef: React.RefObject<HTMLCanvasElement> = React.createRef();
 
   function submit(ev: React.FormEvent<EventTarget>) {
-    const thingGeneratedObject = { isWalletGenerated: true };
+    const thingGeneratedObject = { _id: uuidv4() };
 
     const form = ev.target as HTMLFormElement;
     const data = Array.from(form.elements).reduce(function (
@@ -21,7 +26,10 @@ export default function newForm(props: any) {
     },
     thingGeneratedObject);
 
-    console.log(data);
+    const result = props.db.put(data);
+    result.then((res) => {
+      console.log(res);
+    });
 
     QRCode.toCanvas(
       renderCanvasRef.current,
